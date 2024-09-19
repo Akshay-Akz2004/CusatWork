@@ -73,19 +73,19 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Handle user input and process Groq API response
-if prompt := st.chat_input("What's on your mind?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.markdown(prompt)
+# if prompt := st.chat_input("What's on your mind?"):
+#     st.session_state.messages.append({"role": "user", "content": prompt})
+#     with st.chat_message("user"):
+#         st.markdown(prompt)
 
-    # Call Groq API
-    with st.chat_message("assistant"):
-        response = client.chat.completions.create(
-            model=st.session_state["groq_model"],
-            messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
-        )
-        assistant_message = response.choices[0].message.content
-        st.markdown(assistant_message)
+#     # Call Groq API
+#     with st.chat_message("assistant"):
+#         response = client.chat.completions.create(
+#             model=st.session_state["groq_model"],
+#             messages=[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
+#         )
+#         assistant_message = response.choices[0].message.content
+#         st.markdown(assistant_message)
 
-    # Add assistant's response to session state
-    st.session_state.messages.append({"role": "assistant", "content": assistant_message})
+#     # Add assistant's response to session state
+#     st.session_state.messages.append({"role": "assistant", "content": assistant_message})
